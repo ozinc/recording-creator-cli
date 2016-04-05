@@ -1,5 +1,9 @@
 # OZ recording creator (cli)
 
+## NOTE
+
+This is only useful for clubs that have a 24/7 live stream behind them.
+
 ## Installation
 
 1. `git clone https://github.com/ozinc/recording-creator-cli.git`
@@ -15,3 +19,4 @@ node index.js --token <token> \
   --in="2016-04-05 19:25:00" \
   --out="2016-04-05 19:45:00"
 ```
+If successful, the script will output a link to the newly created video on https://creator.oz.com so one can edit the metadata for the video.
