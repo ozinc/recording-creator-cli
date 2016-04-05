@@ -1,9 +1,5 @@
 # OZ recording creator (cli)
 
-## NOTE
-
-This is only useful for clubs that have a 24/7 live stream behind them.
-
 ## Installation
 
 1. `git clone https://github.com/ozinc/recording-creator-cli.git`
