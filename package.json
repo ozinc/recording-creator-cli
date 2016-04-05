@@ -1,0 +1,19 @@
+{
+  "name": "recording-creator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hrafn Eiriksson <hrafn@oz.com>",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.3.4",
+    "co": "^4.6.0",
+    "lodash": "^4.8.2",
+    "minimist": "^1.2.0",
+    "moment": "^2.12.0",
+    "request": "^2.70.0"
+  }
+}
