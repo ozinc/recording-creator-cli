@@ -76,15 +76,25 @@ function* createSlot (channelId, videoId, inTime, outTime) {
     }
   };
   let res = yield coreClient.postAsync({
-    url: `/channels/${channelId}/slots?vodify=true`,
+    url: `/channels/${channelId}/slots`,
     body: slot
   });
   let slotId = res.body.data.id;
   if (res.statusCode !== 201) {
     throw new Error('unable to create slot: ' + JSON.stringify(res.body));
   }
-  console.log(`(3) recording created (id: ${slotId}), done!`);
+  console.log(`(3) recording created with id: ${slotId}`);
   return slotId;
+}
+
+function* patchSlot (channelId, slotId) {
+  let res = yield coreClient.patchAsync({
+    url: `/channels/${channelId}/slots/${slotId}?vodify=true`
+  });
+  if (res.statusCode !== 200) {
+    throw new Error('unable to trigger recording: ' + JSON.stringify(res.body));
+  }
+  console.log(`(4) triggering record creation, done.`);
 }
 
 // main:
@@ -93,6 +103,7 @@ co(function* () {
     let channelId = yield slugToId(argv.channel);
     let videoId = yield createVideo(argv.channel, channelId, argv.title);
     let slotId = yield createSlot(channelId, videoId, argv.in, argv.out);
+    yield patchSlot(channelId, slotId);
   } catch (err) {
     console.error('Error hit when creating the recording!');
     console.error(err);
